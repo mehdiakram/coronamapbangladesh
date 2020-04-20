@@ -15,7 +15,7 @@ a{
 }
   	svg{height: :50vw;}
 
-  	path{
+  .bdmap path{
    	stroke-width:1px;
   	pointer-events:all; 		
 		transition: .6s fill;
@@ -35,7 +35,7 @@ a{
    	path.divchattogram{fill:#ffbc24;} 	
    	path.divkhulna{fill:#ff7272;} 	
    	path.divbarishal{fill:#15ff54;} 	
-  	path:hover{
+  	.bdmap path:hover{
   		fill:#f6902a;
   		stroke:blue;}
 
@@ -131,6 +131,20 @@ span.deathscount{
   border-right: 1px solid #ddd;
 }
 #districts li:hover{}
+
+
+
+#GenderCase, #AgeCase{
+  border: 1px solid #ccc;
+  margin-bottom: 10px; 
+
+}
+
+
+
+
+
+
 
 
 .copyright{

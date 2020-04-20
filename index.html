@@ -6,6 +6,7 @@
   <link rel="icon" href="corona.svg" type="image/png">
   <link rel="stylesheet" type="text/css" href="style.css"/>
   <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 <body>
 <div class="warper">
@@ -26,7 +27,7 @@
             console.log(res);
             jQuery('.confirmedcount').html(res.total.confirmed)
             jQuery('.recoveredcount').html(res.total.recovered)
-            jQuery('.deathscount').html(res.total.deaths)  
+            jQuery('.deathscount').html(res.total.deaths)
                       
             jQuery('.todayconfirmedcount').html(res.today.todayConfirmed)
             jQuery('.todayrecoveredcount').html(res.today.todayRecovered)
@@ -90,7 +91,8 @@
             jQuery('.panchagorcount').html(res.districts[51].confirmed)
         });
     });
-</script>	
+</script>
+<div class="bdmap">
 <svg 
 xmlns="http://www.w3.org/2000/svg" 
 version="1.1" 
@@ -611,82 +613,239 @@ viewBox="0 0 1600 2200">
 
   <!-- Districts Name -->
   <g class="districttext">
-    <text x="290" y="990" class="kushtiacount">Kushtia</text>
-    <text x="170" y="1030" class="meherpurcount">Meherpur</text>
-    <text x="210" y="1090" class="chuadangacount">Chuadanga</text>
-    <text x="320" y="1110" class="jhenaidahcount">Jhenaidah</text>
-    <text x="320" y="1270" class="jessorecount">Jessore</text>
-    <text x="480" y="1270" class="norailcount">Norail</text>
-    <text x="420" y="1140" class="maguracount">Magura</text>
-    <text x="430" y="1470" class="khulnacount">Khulna</text>
-    <text x="320" y="1470" class="satkhiracount">Satkhira</text>
-    <text x="520" y="1470" class="bagerhatcount">Bagerhat</text>
-
-    <text x="720" y="1000" class="dhakacount">Dhaka</text>
-    <text x="820" y="1050" class="narayanganjcount">Narayanganj</text>
-    <text x="720" y="1120" class="munshiganjcount">Munshiganj</text>
-    <text x="730" y="1220" class="sariatpurcount">Sariatpur</text>
-    <text x="640" y="1240" class="madaripurcount">Madaripur</text>
-    <text x="560" y="1280" class="gopalganjcount">Gopalganj</text>
-    <text x="560" y="1120" class="faridpurcount">Faridpur</text>
-    <text x="460" y="1045" class="rajbaricount">Rajbari</text>
-    <text x="590" y="1000" class="manikganjcount">Manikganj</text>
-    <text x="590" y="860" class="tangailcount">Tangail</text>
-    <text x="770" y="900" class="gazipurcount">Gazipur</text>
-    <text x="870" y="950" class="norshindicount">Norshindi</text>
-    <text x="900" y="800" class="kishorganjcount">Kishorganj</text>
+    <text x="290" y="990">Kushtia</text>
+    <text x="290" y="1010" class="kushtiacount"></text>
+    <text x="170" y="1030">Meherpur</text>
+    <text x="170" y="1050" class="meherpurcount"></text>
+    <text x="210" y="1090">Chuadanga</text>
+    <text x="210" y="1110" class="chuadangacount"></text>
+    <text x="320" y="1110">Jhenaidah</text>
+    <text x="320" y="1130" class="jhenaidahcount"></text>
+    <text x="320" y="1270">Jessore</text>
+    <text x="320" y="1290" class="jessorecount"></text>
+    <text x="480" y="1270">Norail</text>
+    <text x="480" y="1290" class="norailcount"></text>
+    <text x="420" y="1140">Magura</text>
+    <text x="420" y="1160" class="maguracount"></text>
+    <text x="430" y="1470">Khulna</text>
+    <text x="430" y="1490" class="khulnacount"></text>
+    <text x="320" y="1470">Satkhira</text>
+    <text x="320" y="1490" class="satkhiracount"></text>
+    <text x="520" y="1470">Bagerhat</text>
+    <text x="520" y="1490" class="bagerhatcount"></text>
 
 
-    <text x="750" y="700" class="mymenshinghcount">Mymenshingh</text>
-    <text x="900" y="650" class="netrokonacount">Netrokona</text>
-    <text x="640" y="590" class="sherpurcount">Sherpur</text>
-    <text x="550" y="630" class="jamalapurcount">Jamalapur</text>
+    <text x="720" y="1000">Dhaka</text>
+    <text x="720" y="1040" class="dhakacount"></text>
+    <text x="820" y="1050">Narayanganj</text>
+    <text x="820" y="1070" class="narayanganjcount"></text>
+    <text x="720" y="1110">Munshiganj</text>
+    <text x="720" y="1130" class="munshiganjcount"></text>
+    <text x="730" y="1220">Sariatpur</text>
+    <text x="730" y="1240" class="sariatpurcount"></text>
+    <text x="640" y="1240">Madaripur</text>
+    <text x="640" y="1260" class="madaripurcount"></text>
+    <text x="560" y="1280">Gopalganj</text>
+    <text x="560" y="1300" class="gopalganjcount"></text>
+    <text x="560" y="1120">Faridpur</text>
+    <text x="560" y="1140" class="faridpurcount"></text>
+    <text x="460" y="1045">Rajbari</text>
+    <text x="460" y="1065" class="rajbaricount"></text>
+    <text x="590" y="1000">Manikganj</text>
+    <text x="590" y="1020" class="manikganjcount"></text>
+    <text x="590" y="860">Tangail</text>
+    <text x="590" y="880" class="tangailcount"></text>
+    <text x="770" y="900">Gazipur</text>
+    <text x="770" y="920" class="gazipurcount"></text>
+    <text x="870" y="950">Norshindi</text>
+    <text x="870" y="970" class="norshindicount"></text>
+    <text x="900" y="800">Kishorganj</text>
+    <text x="900" y="820" class="kishorganjcount"></text>
 
-    <text x="1280" y="650" class="sylhetcount">Sylhet</text>
-    <text x="1050" y="600" class="sunamganjcount">Sunamganj</text>
-    <text x="1090" y="800" class="hobigonjcount">Hobigonj</text>
-    <text x="1210" y="780" class="mowlovibazarcount">Mowlovibazar</text>
 
-    <text x="760" y="1360" class="barishalcount">Barishal</text>
-    <text x="620" y="1470" class="pirojpurcount">Pirojpur</text>
-    <text x="690" y="1430" class="jhalkhaticount">Jhalkhati</text>
-    <text x="650" y="1630" class="bargunacount">Barguna</text>
-    <text x="750" y="1530" class="patuakhalicount">Patuakhali</text>
-    <text x="870" y="1530" class="bholacount">Bhola</text>
+    <text x="750" y="700">Mymenshingh</text>
+    <text x="750" y="720" class="mymenshinghcount"></text>
+    <text x="900" y="650">Netrokona</text>
+    <text x="900" y="670" class="netrokonacount"></text>
+    <text x="640" y="590">Sherpur</text>
+    <text x="640" y="610" class="sherpurcount"></text>
+    <text x="550" y="630">Jamalapur</text>
+    <text x="590" y="650" class="jamalapurcount"></text>
 
-    <text x="1230" y="1530" class="chottogramcount">Chottogram</text>
-    <text x="1280" y="1780" class="coxsbazarcount">Coxsbazar</text>
-    <text x="1390" y="1740" class="bandarbancount">Bandarban</text>
-    <text x="1370" y="1440" class="rangamaticount">Rangamati</text>
-    <text x="1250" y="1280" class="khagracharicount">Khagrachari</text>
-    <text x="1090" y="1290" class="fenicount">Feni</text>
-    <text x="880" y="1300" class="laximipurcount">Laximipur</text>
-    <text x="870" y="1200" class="chandpurcount">Chandpur</text>
-    <text x="960" y="1120" class="comillacount">Comilla</text>
-    <text x="920" y="1010" class="brahmanbariacount">Brahmanbaria</text>
-    <text x="980" y="1330" class="noakhalicount">Noakhali</text>
 
-    <text x="180" y="760" class="rajshahicount">Rajshahi</text>
-    <text x="310" y="810" class="natorecount">Natore</text>
-    <text x="410" y="910" class="pabnacount">Pabna</text>
-    <text x="440" y="810" class="airajganjcount">Sirajganj</text>
-    <text x="430" y="650" class="bogracount">Bogra</text>
-    <text x="170" y="650" class="naogoancount">Naogoan</text>
-    <text x="10" y="700" class="chapainawabganjcount">ChapaiNawabganj</text>
-    <text x="300" y="550" class="jaipurhatcount">Jaipurhat</text>
+    <text x="1280" y="650">Sylhet</text>
+    <text x="1280" y="670" class="sylhetcount"></text>
+    <text x="1050" y="600">Sunamganj</text>
+    <text x="1050" y="620" class="sunamganjcount"></text>
+    <text x="1090" y="800">Hobigonj</text>
+    <text x="1090" y="820" class="hobigonjcount"></text>
+    <text x="1210" y="780">Mowlovibazar</text>
+    <text x="1210" y="800" class="mowlovibazarcount"></text>
 
-    <text x="350" y="350" class="rangpurcount">Rangpur</text>
-    <text x="430" y="500" class="gaibandhacount">Gaibandha</text>
-    <text x="500" y="350" class="kurigramcount">Kurigram</text>
-    <text x="190" y="350" class="dinajpurcount">Dinajpur</text>
-    <text x="250" y="260" class="nilphamaricount">Nilphamari</text>
-    <text x="30" y="260" class="thakurgoancount">Thakurgoan</text>
-    <text x="130" y="145" class="panchagorcount">Panchagor</text>
-    <text x="350" y="235" class="lalmonirhatcount">Lalmonirhat</text>
+
+    <text x="760" y="1360">Barishal</text>
+    <text x="760" y="1380" class="barishalcount"></text>
+    <text x="620" y="1470">Pirojpur</text>
+    <text x="620" y="1490" class="pirojpurcount"></text>
+    <text x="690" y="1430">Jhalkhati</text>
+    <text x="690" y="1450" class="jhalkhaticount"></text>
+    <text x="650" y="1630">Barguna</text>
+    <text x="650" y="1650" class="bargunacount"></text>
+    <text x="750" y="1530">Patuakhali</text>
+    <text x="750" y="1550" class="patuakhalicount"></text>
+    <text x="870" y="1530">Bhola</text>
+    <text x="870" y="1550" class="bholacount"></text>
+
+
+    <text x="1230" y="1530">Chottogram</text>
+    <text x="1230" y="1550" class="chottogramcount"></text>
+    <text x="1280" y="1780">Coxsbazar</text>
+    <text x="1280" y="1800" class="coxsbazarcount"></text>
+    <text x="1390" y="1740">Bandarban</text>
+    <text x="1390" y="1760" class="bandarbancount"></text>
+    <text x="1370" y="1440">Rangamati</text>
+    <text x="1370" y="1460" class="rangamaticount"></text>
+    <text x="1250" y="1280">Khagrachari</text>
+    <text x="1250" y="1300" class="khagracharicount"></text>
+    <text x="1090" y="1290">Feni</text>
+    <text x="1090" y="1310" class="fenicount">Fen</text>
+    <text x="880" y="1300">Laximipur</text>
+    <text x="880" y="1320" class="laximipurcount"></text>
+    <text x="870" y="1200">Chandpur</text>
+    <text x="870" y="1220" class="chandpurcount"></text>
+    <text x="960" y="1120">Comilla</text>
+    <text x="960" y="1140" class="comillacount"></text>
+    <text x="920" y="1010">Brahmanbaria</text>
+    <text x="920" y="1030" class="brahmanbariacount"></text>
+    <text x="980" y="1330">Noakhali</text>
+    <text x="980" y="1350" class="noakhalicount"></text>
+
+
+    <text x="180" y="760">Rajshahi</text>
+    <text x="220" y="780" class="rajshahicount"></text>
+    <text x="310" y="810">Natore</text>
+    <text x="310" y="830" class="natorecount"></text>
+    <text x="410" y="910">Pabna</text>
+    <text x="410" y="930" class="pabnacount"></text>
+    <text x="440" y="810">Sirajganj</text>
+    <text x="440" y="830" class="airajganjcount"></text>
+    <text x="430" y="650">Bogra</text>
+    <text x="430" y="670" class="bogracount"></text>
+    <text x="170" y="650">Naogoan</text>
+    <text x="170" y="670" class="naogoancount"></text>
+    <text x="10" y="700">ChapaiNawabganj</text>
+    <text x="10" y="720" class="chapainawabganjcount"></text>
+    <text x="300" y="550">Jaipurhat</text>
+    <text x="300" y="570" class="jaipurhatcount"></text>
+
+    <text x="350" y="350">Rangpur</text>
+    <text x="350" y="370" class="rangpurcount"></text>
+    <text x="430" y="500">Gaibandha</text>
+    <text x="430" y="520" class="gaibandhacount"></text>
+    <text x="500" y="350">Kurigram</text>
+    <text x="500" y="370" class="kurigramcount"></text>
+    <text x="190" y="350">Dinajpur</text>
+    <text x="190" y="370" class="dinajpurcount"></text>
+    <text x="250" y="260">Nilphamari</text>
+    <text x="300" y="280" class="nilphamaricount"></text>
+    <text x="30" y="260">Thakurgoan</text>
+    <text x="30" y="280" class="thakurgoancount"></text>
+    <text x="130" y="145">Panchagor</text>
+    <text x="200" y="165" class="panchagorcount"></text>
+    <text x="350" y="235">Lalmonirhat</text>
+    <text x="400" y="255" class="lalmonirhatcount"></text>
 
   </g>
 </svg>  
 </div>
+</div>
+<div class="warper">
+    <script type="text/javascript">
+    jQuery.get('https://fastaar.com/api', function(res){
+            // Gender Case
+            var genderfemale = parseInt(res.genders.female)
+            var gendermale = parseInt(res.genders.male)
+
+            var ageonetoten = parseInt(res.ages.onetoten)
+            var agetentotwenty = parseInt(res.ages.tentotwenty)
+            var agetwentytothirty = parseInt(res.ages.twentytothirty)
+            var agethirtytoforty = parseInt(res.ages.thirtytoforty)
+            var agefortytofifty = parseInt(res.ages.fortytofifty)
+            var agefiftytosixty = parseInt(res.ages.fiftytosixty)
+            var agesixtyplus = parseInt(res.ages.sixtyplus)
+        
+
+
+
+
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(GenderCase);
+      function GenderCase() {
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Female', genderfemale],
+          ['Male', gendermale],                    
+        ]);
+
+        var options = {
+          title: 'Total Corona % Bangladesh Genderwise',
+          is3D: true, // true or false
+          pieSliceText: 'label',
+          pieSliceTextStyle: {color: '#fff',}, 
+          colors: ['#0dcc2d','#da0707',],         
+          //pieHole: 0.4,
+          legend:'right', // none, left, right
+          //pieStartAngle: 40,
+/*          slices: {
+            0: {offset: 0.2},
+            1: { color: '#ddd' } // color: '#ddd' or offset: 0.2
+          },*/
+          //'width':400,
+          height:500,        
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('GenderCase'));
+      chart.draw(data, options);     
+      }
+
+
+
+    //
+      google.charts.load('current', {'packages':['corechart', 'bar']});
+      google.charts.setOnLoadCallback(AgeCase);
+
+      function AgeCase() {
+        var data = google.visualization.arrayToDataTable([
+          ['Age', 'Corona Infected'],
+          ['Age: 1-10', ageonetoten],
+          ['Age: 10-20', agetentotwenty],
+          ['Age: 20-30', agetwentytothirty],
+          ['Age: 30-40', agethirtytoforty],
+          ['Age: 40-50', agefortytofifty],
+          ['Age: 50-60', agefiftytosixty],
+          ['Age: 60+', agesixtyplus],
+        ]);
+
+        var options = {
+            height: 500,
+            legend: { position: 'none' },
+            bar: { groupWidth: '75%'},
+            colors: ['#9575cd', '#b87333'],
+          chart: {
+            title: 'Total Corona Bangladesh Agewise',  
+            subtitle: '',
+          },
+
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('AgeCase'));
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    }); 
+    </script>
+    <div id="GenderCase"></div> 
+    <div id="AgeCase"></div> 
+</div>    
 <div class="warper">
   <div class="copyright"><a href="http://www.royaltechbd.com" target="_blank">Royal Technologies</a></div>
 </div>
