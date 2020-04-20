@@ -141,6 +141,13 @@ span.deathscount{
   border-radius: 0px 0px 4px 4px;  
 }
 
+.gendercase{
+    background: #7f5fce;
+    text-align: center;
+    color: #fff;
+    padding: 10px 0;
+}
+
 .footer, #GenderCase, #AgeCase{
   border: 1px solid #7f5fce;
   margin-bottom: 20px; 
@@ -148,7 +155,9 @@ span.deathscount{
   border-radius: 0px 0px 4px 4px;
 }
 
-
+.footer{
+  padding: 10px 0;
+}
 .update{
     text-align: center;
 }
