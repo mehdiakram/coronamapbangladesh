@@ -25,7 +25,9 @@
     jQuery(function(){
         jQuery.get('https://fastaar.com/api', function(res){
             console.log(res);
+            jQuery('.lastUpdate').html(res.lastUpdate)
             jQuery('.confirmedcount').html(res.total.confirmed)
+
             jQuery('.recoveredcount').html(res.total.recovered)
             jQuery('.deathscount').html(res.total.deaths)
                       
@@ -800,7 +802,7 @@ viewBox="0 0 1600 2200">
             0: {offset: 0.2},
             1: { color: '#ddd' } // color: '#ddd' or offset: 0.2
           },*/
-          //'width':400,
+          width:"100%",
           height:500,        
         };
 
@@ -810,44 +812,54 @@ viewBox="0 0 1600 2200">
 
 
 
-    //
-      google.charts.load('current', {'packages':['corechart', 'bar']});
-      google.charts.setOnLoadCallback(AgeCase);
+ 
+//
+    google.charts.load("current", {packages:['corechart']});
+    google.charts.setOnLoadCallback(AgeCase);
+    function AgeCase() {
+      var data = google.visualization.arrayToDataTable([
+        ["Age", "Corona Infected", { role: "style" } ],
+        ['Age: 1-10', ageonetoten, "#007bff"],
+        ['Age: 10-20', agetentotwenty, "#e83e8c"],
+        ['Age: 20-30', agetwentytothirty, "#6f42c1"],
+        ['Age: 30-40', agethirtytoforty, "#fd7e14"],
+        ['Age: 40-50', agefortytofifty, "#dc3545"],
+        ['Age: 50-60', agefiftytosixty, "#17a2b8"],
+        ['Age: 60+', agesixtyplus, "#28a745"],
+      ]);
 
-      function AgeCase() {
-        var data = google.visualization.arrayToDataTable([
-          ['Age', 'Corona Infected'],
-          ['Age: 1-10', ageonetoten],
-          ['Age: 10-20', agetentotwenty],
-          ['Age: 20-30', agetwentytothirty],
-          ['Age: 30-40', agethirtytoforty],
-          ['Age: 40-50', agefortytofifty],
-          ['Age: 50-60', agefiftytosixty],
-          ['Age: 60+', agesixtyplus],
-        ]);
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
 
-        var options = {
-            height: 500,
-            legend: { position: 'none' },
-            bar: { groupWidth: '75%'},
-            colors: ['#9575cd', '#b87333'],
-          chart: {
-            title: 'Total Corona Bangladesh Agewise',  
-            subtitle: '',
-          },
+      var options = {
+        title: "Total Corona Bangladesh Agewise",
+        height: 500,
+        width:"100%",
+        legend: { position: 'none' },
+        bar: { groupWidth: '75%'},
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.ColumnChart(document.getElementById("AgeCase"));
+      chart.draw(view, options);
+     }
 
-        };
 
-        var chart = new google.charts.Bar(document.getElementById('AgeCase'));
-        chart.draw(data, google.charts.Bar.convertOptions(options));
-      }
+
+
     }); 
     </script>
     <div id="GenderCase"></div> 
-    <div id="AgeCase"></div> 
 </div>    
 <div class="warper">
+    <div class="footer">
+  <div class="update">Last Update : <span class="lastUpdate"></span></div>
   <div class="copyright"><a href="http://www.royaltechbd.com" target="_blank">Royal Technologies</a></div>
+  </div>
 </div>
 </body>
 </html>
