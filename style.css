@@ -1,0 +1,135 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  font-family: 'Hind Siliguri', 
+  sans-serif;
+}
+a{
+
+}
+.warper{
+    max-width: 990px;
+    margin: 0 auto;
+}
+  	svg{height: :50vw;}
+
+  	path{
+   	stroke-width:1px;
+  	pointer-events:all; 		
+		transition: .6s fill;
+		fill-opacity:1;
+		fill-rule:evenodd;
+		stroke:#ffffff;
+		stroke-linecap:butt;
+		stroke-linejoin:miter;
+		stroke-opacity:1;
+		cursor: pointer;
+  	}
+   	path.divrajshahi{fill:#aab0c8;} 	
+   	path.divrangpur{fill:#ff5722;} 	
+   	path.divmymensingh{fill:#3f51b5;} 	
+   	path.divdhaka{fill:#00bcd4;} 	
+   	path.divsylhet{fill:#e58f8d;} 	
+   	path.divchattogram{fill:#ffbc24;} 	
+   	path.divkhulna{fill:#ff7272;} 	
+   	path.divbarishal{fill:#15ff54;} 	
+  	path:hover{
+  		fill:#f6902a;
+  		stroke:blue;}
+
+
+  .iconmark{
+  fill:#000;
+  }
+  .districttext{
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  table.tooltipdata {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  table.tooltipdata td, table.tooltipdata th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+
+  table.tooltipdata tr.infected {
+    background-color: #fff;
+  }
+  table.tooltipdata tr.deaths {
+    background-color: #ff0000;
+  }
+  table.tooltipdata tr.recovered {
+    background-color: #ff00ff;
+  }
+
+
+
+.coronasummery{
+  display: flex;
+}
+.countCard {
+    width: 33.333333333%;
+    text-align: center;
+    padding: 20px 5px;
+    border-radius: 4px;
+    border: 0;
+    border: 1px solid rgb(241, 241, 241);
+    margin: 25px;
+    color: #333;
+    background: #fff;
+    box-shadow: 0 4px 8px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.countCard span{
+    display: block;
+    font-size: 16px; 
+}
+.confirmed {
+    color: #7f5fce;
+    border-bottom: 7px solid #7f5fce;
+}
+
+.recovered {
+    color: #4CAF50;
+    border-bottom: 7px solid #4CAF50;
+}
+.deaths {
+    color: #f11771;
+    border-bottom: 7px solid #f11771;
+}
+span.confirmedcount,
+span.recoveredcount,
+span.deathscount{
+    font-size: 24px;
+    font-weight: bold;
+}
+
+
+
+.marquee{
+  background: #e04311;
+    color: #fff;
+}
+#districts{
+  display: flex;
+  margin: 10px 0;
+}
+
+#districts li{
+  list-style: none;
+  padding: 0 10px;
+  border-right: 1px solid #ddd;
+}
+#districts li:hover{}
+
+
+.copyright{
+    text-align: center;
+}
