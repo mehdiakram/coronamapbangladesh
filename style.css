@@ -134,26 +134,21 @@ span.deathscount{
 
 
 
-.bdmap, #GenderCase, #AgeCase{
-  border: 1px solid #ccc;
+.bdmap{
+  border: 1px solid #e04311;
+  margin-bottom: 20px; 
+  border-bottom: 7px solid #e04311;
+  border-radius: 0px 0px 4px 4px;  
+}
+
+.footer, #GenderCase, #AgeCase{
+  border: 1px solid #7f5fce;
   margin-bottom: 20px; 
   border-bottom: 7px solid #7f5fce;
-  border-radius: 4px;
+  border-radius: 0px 0px 4px 4px;
 }
 
 
-
-
-
-
-
-.footer{
-  color: #7f5fce;
-  border-bottom: 7px solid #7f5fce;
-  border-radius: 4px;
-  margin-bottom: 10px;
-  padding: 10px 0; 
-}
 .update{
     text-align: center;
 }
