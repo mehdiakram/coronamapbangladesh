@@ -141,26 +141,75 @@ span.deathscount{
   border-radius: 0px 0px 4px 4px;  
 }
 
-.gendercase{
+
+
+
+
+table#DistrictswiseTable {
+  width:100%;
+}
+table#DistrictswiseTable, 
+table#DistrictswiseTable th, 
+table#DistrictswiseTable td {
+  border: 1px solid #7f5fce;
+  border-collapse: collapse;
+}
+table#DistrictswiseTable th, 
+table#DistrictswiseTable td {
+  padding: 15px;
+  text-align: left;
+}
+table#DistrictswiseTable tr:nth-child(even) {
+  background: #eee;
+}
+table#DistrictswiseTable tr:nth-child(odd) {
+ background-color: #fff;
+}
+table#DistrictswiseTable th {
+    background: #7f5fce;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;  
+}
+
+
+
+
+
+
+
+.generalcase{
     background: #7f5fce;
     text-align: center;
     color: #fff;
     padding: 10px 0;
+    font-size: 16px;
+    font-weight: bold;   
 }
 
-.footer, #GenderCase, #AgeCase{
+
+#GenderCase, 
+#AgeCase{
   border: 1px solid #7f5fce;
   margin-bottom: 20px; 
   border-bottom: 7px solid #7f5fce;
   border-radius: 0px 0px 4px 4px;
 }
 
+.generalcase_inner,
 .footer{
-  padding: 10px 0;
+  padding: 10px;
+  border: 1px solid #7f5fce;
+  margin-bottom: 20px; 
+  border-bottom: 7px solid #7f5fce;
+  border-radius: 0px 0px 4px 4px;  
 }
+
 .update{
     text-align: center;
 }
+
 .copyright{
     text-align: center;
 }
+

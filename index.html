@@ -778,7 +778,9 @@ viewBox="0 0 1600 2200">
             var agesixtyplus = parseInt(res.ages.sixtyplus)
         
 
-
+            res.districts.forEach(function(district){
+                $("#DistrictswiseTable").append(`<tr><td>${district.name}</td><td>${district.confirmed}</td></tr>`);
+            });
 
 
       google.charts.load('current', {'packages':['corechart']});
@@ -854,13 +856,30 @@ viewBox="0 0 1600 2200">
 
     }); 
     </script>
-    <div class="gendercase">Gender</div>
+    <div class="generalcase">Gender Wise Data</div>
     <div id="GenderCase"></div>
-</div>    
+</div>
+
+<div class="warper">
+<div class="generalcase">District Wise Data</div>
+<div class="generalcase_inner">
+<table id="DistrictswiseTable" data-order='[[ 1, "desc" ]]'>
+  <thead>
+    <tr>
+      <th>District</th>
+      <th>Total Infected</th>
+    </tr>
+  </thead>
+  <tbody class="DistrictswiseTable">  
+  </tbody>
+</table> 
+</div>     
+</div>
+
 <div class="warper">
     <div class="footer">
-  <div class="update">Last Update : <span class="lastUpdate"></span></div>
-  <div class="copyright"><a href="http://www.royaltechbd.com" target="_blank">Royal Technologies</a></div>
+    <div class="update">Last Update : <span class="lastUpdate"></span></div>
+    <div class="copyright"><a href="http://www.royaltechbd.com" target="_blank">Royal Technologies</a></div>
   </div>
 </div>
 </body>
