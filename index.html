@@ -14,6 +14,11 @@
         <div class="countCard recovered"><span>Total Recovered</span><span class="recoveredcount"></span></div>
         <div class="countCard deaths"><span>Total Deaths</span><span class="deathscount"></span></div>
     </div>
+    <div class="coronasummery">
+        <div class="countCard confirmed"><span>Today Confirmed</span><span class="todayconfirmedcount"></span></div>
+        <div class="countCard recovered"><span>Today Recovered</span><span class="todayrecoveredcount"></span></div>
+        <div class="countCard deaths"><span>Today Deaths</span><span class="todaydeathscount"></span></div>
+    </div>    
     <div class="marquee"><marquee behavior="" direction=""><ul id="districts"></ul></marquee></div>
 <script>
     jQuery(function(){
@@ -21,7 +26,11 @@
             console.log(res);
             jQuery('.confirmedcount').html(res.total.confirmed)
             jQuery('.recoveredcount').html(res.total.recovered)
-            jQuery('.deathscount').html(res.total.deaths)
+            jQuery('.deathscount').html(res.total.deaths)  
+                      
+            jQuery('.todayconfirmedcount').html(res.today.todayConfirmed)
+            jQuery('.todayrecoveredcount').html(res.today.todayRecovered)
+            jQuery('.todaydeathscount').html(res.today.todayDeaths)
 
             res.districts.forEach(function(district){
                 $("#districts").append(`<li class="slideItem"> ${district.name}-${district.confirmed} </li>`);

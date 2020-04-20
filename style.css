@@ -78,7 +78,7 @@ a{
 .countCard {
     width: 33.333333333%;
     text-align: center;
-    padding: 20px 5px;
+    padding: 5px;
     border-radius: 4px;
     border: 0;
     border: 1px solid rgb(241, 241, 241);
@@ -104,6 +104,9 @@ a{
     color: #f11771;
     border-bottom: 7px solid #f11771;
 }
+span.todayconfirmedcount,
+span.todayrecoveredcount,
+span.todaydeathscount,
 span.confirmedcount,
 span.recoveredcount,
 span.deathscount{
