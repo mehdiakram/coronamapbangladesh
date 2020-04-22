@@ -3,8 +3,8 @@
   padding: 0;
 }
 body{
-  font-family: 'Hind Siliguri', 
-  sans-serif;
+  font-family: 'Hind Siliguri', sans-serif;
+  counter-reset: Serial;    
 }
 a{
 
@@ -47,29 +47,6 @@ a{
     font-size: 20px;
     font-weight: bold;
   }
-
-  table.tooltipdata {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-  }
-
-  table.tooltipdata td, table.tooltipdata th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-  }
-
-  table.tooltipdata tr.infected {
-    background-color: #fff;
-  }
-  table.tooltipdata tr.deaths {
-    background-color: #ff0000;
-  }
-  table.tooltipdata tr.recovered {
-    background-color: #ff00ff;
-  }
-
 
 
 .coronasummery{
@@ -154,11 +131,19 @@ table#DistrictswiseTable td {
   border: 1px solid #7f5fce;
   border-collapse: collapse;
 }
+
 table#DistrictswiseTable th, 
 table#DistrictswiseTable td {
   padding: 15px;
+  text-align: center;
+}
+
+table#DistrictswiseTable th:nth-child(2), 
+table#DistrictswiseTable td:nth-child(2) {
+  padding: 15px;
   text-align: left;
 }
+
 table#DistrictswiseTable tr:nth-child(even) {
   background: #eee;
 }
@@ -172,12 +157,11 @@ table#DistrictswiseTable th {
     font-weight: bold;  
 }
 
-
-
-
-
-
-
+table#DistrictswiseTable tr td:first-child:before
+{
+  counter-increment: Serial;      /* Increment the Serial counter */
+  content: counter(Serial); /* Display the counter */
+}
 .generalcase{
     background: #7f5fce;
     text-align: center;
@@ -189,6 +173,7 @@ table#DistrictswiseTable th {
 
 
 #GenderCase, 
+#AgeCase, 
 #AgeCase{
   border: 1px solid #7f5fce;
   margin-bottom: 20px; 
