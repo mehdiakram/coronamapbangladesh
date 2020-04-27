@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COVID-19 Live Data</title>
     <link rel="icon" href="corona.svg" type="image/png">
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>  
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <link href="https://unpkg.com/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <script src="https://unpkg.com/jquery@3.4.1/dist/jquery.min.js"></script>
     <script src="https://unpkg.com/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://unpkg.com/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -103,6 +103,12 @@
             jQuery('.chapainawabganjcount').html(res.districts[52].confirmed)
             jQuery('.naogaoncount').html(res.districts[53].confirmed)
             jQuery('.sirajganjcount').html(res.districts[54].confirmed)
+            jQuery('.maguracount').html(res.districts[55].confirmed)
+            jQuery('.meherpurcount').html(res.districts[56].confirmed)
+            jQuery('.kushtiacount').html(res.districts[57].confirmed)
+            jQuery('.natorecount').html(res.districts[58].confirmed)
+            jQuery('.bholacount').html(res.districts[59].confirmed)
+            jQuery('.jhenaidahcount').html(res.districts[60].confirmed)
         });
     });
 </script>
@@ -114,13 +120,13 @@ xlink="http://www.w3.org/1999/xlink"
 viewBox="0 0 1600 2200">
     <a xlink:href="#" xlink:alt="Rajshahi" xlink:title="Rajshahi">
     <path 
-    class="divrajshahi tooltip" 
+    class="divrajshahi" 
     id="rajshahi"
     d="m 96.104935,778.1615 3.812678,-8.75968 -8.896248,-11.26244 1.270892,-16.26796 -7.625355,-8.75968 1.270892,-10.01105 25.417856,-7.5083 15.25071,-7.50829 -1.27089,-10.01106 24.14695,1.25139 3.81268,-3.75415 -3.81268,-6.25691 -6.35446,3.75415 -8.89625,-5.00553 16.52161,-8.75968 19.06339,6.25691 1.27089,10.01106 7.62535,2.50276 7.62536,-8.75967 6.35446,5.00553 -1.27089,13.7652 11.43803,5.00553 27.95964,-15.01659 -1.27089,-2.50276 13.97982,5.00553 7.62535,6.25691 10.16714,-1.25138 8.89625,8.75967 10.16714,-3.75415 0,12.51383 1.27089,6.25691 10.16715,5.00552 6.35446,0 0,7.5083 -2.54179,6.25691 -13.97982,1.25138 -7.62535,6.25691 5.08357,0 7.62536,7.50829 -11.43804,8.75968 1.27089,6.25691 0,0 1.2709,33.78731 -12.70893,8.75968 -2.54178,3.75415 0,0 6.35446,12.51382 10.16714,-2.50277 1.27089,7.5083 2.54179,6.25691 3.81268,3.75414 -16.52161,6.25691 -5.08357,5.00553 6.35446,5.00553 -7.62535,3.75415 5.08357,3.75414 -5.08357,3.75415 13.97982,2.50276 2.54178,5.00553 -10.16714,2.50277 -1.27089,5.00552 -12.70893,0 -17.79249,-7.50829 -11.43804,-10.01106 -5.08357,-2.50276 -8.89625,-2.50276 0,-5.00553 10.16715,-2.50277 1.27089,-26.27902 -8.89625,-18.77073 -10.16714,-1.25138 -5.08357,7.50829 -19.06339,-1.25138 -11.43803,-6.25691 -8.89625,7.50829 -11.43804,-6.25691 -11.43803,-11.26244 -5.08357,1.25138 -1.27089,-6.25691 -11.43804,-2.50276 -12.70892,-6.25691 -11.438035,-16.26797 z" />
   </a>
   
     <a xlink:href="#" xlink:alt="Nilphamari" xlink:title="Nilphamari">
-    <path class="divrangpur tooltip"
+    <path class="divrangpur"
     d="m 234.63223,118.68313 6.35446,-6.25691 6.35446,1.25138 6.35447,5.00553 -5.08357,13.7652 7.62535,2.50277 6.35447,7.50829 7.62535,-1.25138 -1.27089,-8.75968 -6.35446,-3.75414 7.62535,-8.75968 13.97982,1.25139 6.35446,8.75967 5.08357,6.25691 3.81268,6.25691 2.54179,-3.75414 11.43803,0 2.54179,2.50276 7.62535,-3.75415 0,8.75968 1.27089,15.01658 8.89625,6.25691 8.89625,5.00553 2.54178,6.25691 -1.27089,7.50829 -2.54178,18.77074 3.81267,12.51382 2.54179,13.7652 10.16714,8.75968 11.43803,7.50829 8.89625,7.50829 -3.81268,10.01106 -3.81267,8.75967 -3.81268,5.00553 -7.62536,-8.75967 -12.70892,11.26243 1.27089,13.76521 -10.16714,-10.01106 -6.35446,12.51382 -20.33429,-5.00553 -13.97981,3.75415 5.08357,12.51382 -6.35447,7.50829 -3.81267,6.25691 -11.43804,-1.25138 -10.16714,-8.75967 -6.35446,0 0,-13.76521 -10.16714,-2.50276 0,-30.03317 -5.08357,-6.25691 -5.08357,-8.75968 -13.97982,-3.75414 1.27089,-6.25691 -3.81268,-2.50277 0,-10.01105 -1.27089,-3.75415 5.08357,-6.25691 -3.81268,6.25691 7.62536,-11.26244 7.62535,-3.75415 0,-21.27349 3.81268,-7.50829 0,-5.00553 -1.27089,-17.51935 3.81268,-7.50829 -13.97982,-15.01659 0,-17.51935 z" />
     </a>
 
@@ -777,17 +783,17 @@ viewBox="0 0 1600 2200">
     <script type="text/javascript">
     jQuery.get('https://fastaar.com/api', function(res){
             // Gender Case %
-            var genderfemale = parseInt(res.genders[1].confirmed)
-            var gendermale = parseInt(res.genders[0].confirmed)
+            var genderfemale = parseInt(res.genders.female.confirmed)
+            var gendermale = parseInt(res.genders.male.confirmed)
            
             // Gender Case %
-            var ageonetoten = parseInt(res.ages[0].confirmed)
-            var agetentotwenty = parseInt(res.ages[1].confirmed)
-            var agetwentytothirty = parseInt(res.ages[2].confirmed)
-            var agethirtytoforty = parseInt(res.ages[3].confirmed)
-            var agefortytofifty = parseInt(res.ages[4].confirmed)
-            var agefiftytosixty = parseInt(res.ages[5].confirmed)
-            var agesixtyplus = parseInt(res.ages[6].confirmed)
+            // var ageonetoten = parseInt(res.ages.onetoten.confirmed)
+            // var agetentotwenty = parseInt(res.ages.tentotwenty.confirmed)
+            // var agetwentytothirty = parseInt(res.ages.twentytothirty.confirmed)
+            // var agethirtytoforty = parseInt(res.ages.thirtytoforty.confirmed)
+            // var agefortytofifty = parseInt(res.ages.fortytofifty.confirmed)
+            // var agefiftytosixty = parseInt(res.ages.fiftytosixty.confirmed)
+            // var agesixtyplus = parseInt(res.ages.sixtyplus.confirmed)
         
 
             res.districts.forEach(function(district){
