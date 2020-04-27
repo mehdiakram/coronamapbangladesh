@@ -1,48 +1,74 @@
-<!DOCTYPE html>
-<html lang="en" >
+<!DOCTYPE HTML>
+<html lang="en-US">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COVID-19 Live Data</title>
-    <link rel="icon" href="corona.svg" type="image/png">
-	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>  
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <link href="https://unpkg.com/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <script src="https://unpkg.com/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://unpkg.com/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css"/>  
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Covid-19 Status Bangladesh</title>
+<link rel="icon" href="corona.svg" type="image/png">
+<meta name="description" content="" />
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel='stylesheet' type='text/css'>
+<link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css?ver=5.4" type='text/css' media='all' />
+<script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="js/jquery.number.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" media="all" href="style.css" />
 </head>
 <body>
-<div class="warper">
-    <div class="coronasummery">
-        <div class="countCard confirmed"><span>Total Confirmed</span><span class="confirmedcount"></span></div>
-        <div class="countCard recovered"><span>Total Recovered</span><span class="recoveredcount"></span></div>
-        <div class="countCard deaths"><span>Total Deaths</span><span class="deathscount"></span></div>
+<div class="wrap"> <!-- Warp Start -->
+	<div class="header">
+			<div class="header_top">
+					<img src="images/top_banner.jpg" alt="" />
+				<div class="right_box">
+					<div class="social">
+						<ul>
+														
+						</ul>
+					</div>			
+				</div>
+			</div>			
+    <div class="rt-mainnav">
+        <ul id="menu" class="royalnav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="world.html">World Data</a></li>
+        </ul>
     </div>
-    <div class="coronasummery">
-        <div class="countCard confirmed"><span>Today Confirmed</span><span class="todayconfirmedcount"></span></div>
-        <div class="countCard recovered"><span>Today Recovered</span><span class="todayrecoveredcount"></span></div>
-        <div class="countCard deaths"><span>Today Deaths</span><span class="todaydeathscount"></span></div>
-    </div>    
-    <div class="marquee"><marquee behavior="" direction=""><ul id="districts"></ul></marquee></div>
+	</div>
+	
+	
+<div class="main_cont"> <!-- Main Container Start -->
+	<div class="main_area"> <!-- Main Area Start -->   
+        <div class="right_cont">
+        <div class="generalcase">COVID-19 Bangladesh Summary</div>
+        <div class="generalcase_inner">    
+            <div class="coronasummery">
+                <div class="countCard confirmed"><span>Total Confirmed</span><span class="confirmedcount"></span></div>
+                <div class="countCard recovered"><span>Total Recovered</span><span class="recoveredcount"></span></div>
+                <div class="countCard deaths"><span>Total Deaths</span><span class="deathscount"></span></div>
+            </div>
+            <div class="coronasummery">
+                <div class="countCard confirmed"><span>Today Confirmed</span><span class="todayconfirmedcount"></span></div>
+                <div class="countCard recovered"><span>Today Recovered</span><span class="todayrecoveredcount"></span></div>
+                <div class="countCard deaths"><span>Today Deaths</span><span class="todaydeathscount"></span></div>
+            </div>
+        <div class="update">Last Update : <span class="lastUpdate"></span></div>
+        </div>  
+        <div class="marquee"><marquee behavior="" direction=""><ul id="districts"></ul></marquee></div>
 <script>
     jQuery(function(){
         jQuery.get('https://fastaar.com/api', function(res){
             console.log(res);
             jQuery('.lastUpdate').html(res.lastUpdate)
-            jQuery('.confirmedcount').html(res.total.confirmed)
-
-            jQuery('.recoveredcount').html(res.total.recovered)
-            jQuery('.deathscount').html(res.total.deaths)
+            
+            jQuery('.confirmedcount').html(res.total.confirmed).number(true)
+            jQuery('.recoveredcount').html(res.total.recovered).number(true)
+            jQuery('.deathscount').html(res.total.deaths).number(true)
                       
-            jQuery('.todayconfirmedcount').html(res.today.todayConfirmed)
-            jQuery('.todayrecoveredcount').html(res.today.todayRecovered)
-            jQuery('.todaydeathscount').html(res.today.todayDeaths)
+            jQuery('.todayconfirmedcount').html(res.today.todayConfirmed).number(true)
+            jQuery('.todayrecoveredcount').html(res.today.todayRecovered).number(true)
+            jQuery('.todaydeathscount').html(res.today.todayDeaths).number(true)
 
             res.districts.forEach(function(district){
                 $("#districts").append(`<li class="slideItem"> ${district.name}-${district.confirmed} </li>`);
@@ -776,186 +802,45 @@ viewBox="0 0 1600 2200">
     <text x="400" y="255" class="lalmonirhatcount"></text>
 
   </g>
-</svg>  
+</svg>
+<div class="update">Last Update : <span class="lastUpdate"></span></div>  
 </div>
+	
 </div>
-<div class="warper">
-    <script type="text/javascript">
-    jQuery.get('https://fastaar.com/api', function(res){
-            // Gender Case %
-            var genderfemale = parseInt(res.genders.female.confirmed)
-            var gendermale = parseInt(res.genders.male.confirmed)
-           
-            // Gender Case %
-            // var ageonetoten = parseInt(res.ages.onetoten.confirmed)
-            // var agetentotwenty = parseInt(res.ages.tentotwenty.confirmed)
-            // var agetwentytothirty = parseInt(res.ages.twentytothirty.confirmed)
-            // var agethirtytoforty = parseInt(res.ages.thirtytoforty.confirmed)
-            // var agefortytofifty = parseInt(res.ages.fortytofifty.confirmed)
-            // var agefiftytosixty = parseInt(res.ages.fiftytosixty.confirmed)
-            // var agesixtyplus = parseInt(res.ages.sixtyplus.confirmed)
-        
+	<div class="left_cont">
+		
+		<div class="widget_text widget-box">
+			<h3 class="widget-title">Advertisement</h3>
+			<div class="textwidget custom-html-widget">
+			
 
-            res.districts.forEach(function(district){
-                $("#DistrictswiseTable").append(`<tr><td></td><td>${district.name}</td><td>${district.confirmed}</td></tr>`);
-            });
+			</div>
+		</div>
 
+	</div><!-- End of left_cont -->  
+	</div> <!-- Main Area Start -->
+</div> <!-- Main Container End -->	
 
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(GenderCase);
-      function GenderCase() {
-        var data = google.visualization.arrayToDataTable([
-          ['Task', '%'],
-          ['Female', genderfemale],
-          ['Male', gendermale],                    
-        ]);
+	
+	
 
-        var options = {
-          title: 'Total COVID-19 % Bangladesh Genderwise',
-          is3D: true, // true or false
-          pieSliceText: 'label',
-          pieSliceTextStyle: {color: '#fff',}, 
-          colors: ['#0dcc2d','#da0707',],         
-          //pieHole: 0.4,
-          legend:'right', // none, left, right
-          //pieStartAngle: 40,
-/*          slices: {
-            0: {offset: 0.2},
-            1: { color: '#ddd' } // color: '#ddd' or offset: 0.2
-          },*/
-          width:"100%",
-          height:500,        
-        };
+		<div class="footer_wrap">
+			<div class="copyright">
+						&copy; 2020 Covid-19 Status Bangladesh, All Rights Reserved.
+						</div>
+			<div class="designed">
+			Designed &amp; Developed by <a href="https://www.royaltechbd.com/" target="_blank">Royal Technologies</a>
+			</div>
+		</div>	
+</div>	<!-- Warp End -->
 
-        var chart = new google.visualization.PieChart(document.getElementById('GenderCase'));
-      chart.draw(data, options);     
-      }
-
-
-
- 
-//
-    google.charts.load("current", {packages:['corechart']});
-    google.charts.setOnLoadCallback(AgeCase);
-    function AgeCase() {
-      var data = google.visualization.arrayToDataTable([
-        ["Age", "COVID-19 Infected %", { role: "style" } ],
-        ['Age: 1-10', ageonetoten, "#007bff"],
-        ['Age: 10-20', agetentotwenty, "#e83e8c"],
-        ['Age: 20-30', agetwentytothirty, "#6f42c1"],
-        ['Age: 30-40', agethirtytoforty, "#fd7e14"],
-        ['Age: 40-50', agefortytofifty, "#dc3545"],
-        ['Age: 50-60', agefiftytosixty, "#17a2b8"],
-        ['Age: 60+', agesixtyplus, "#28a745"],
-      ]);
-
-      var view = new google.visualization.DataView(data);
-      view.setColumns([0, 1,
-                       { calc: "stringify",
-                         sourceColumn: 1,
-                         type: "string",
-                         role: "annotation" },
-                       2]);
-
-      var options = {
-        title: "Total COVID-19 % Bangladesh Agewise",
-        height: 500,
-        width:"100%",
-        legend: { position: 'none' },
-        bar: { groupWidth: '75%'},
-        legend: { position: "none" },
-      };
-      var chart = new google.visualization.ColumnChart(document.getElementById("AgeCase"));
-      chart.draw(view, options);
-     }
-
-
-
-    }); 
-    </script>
-    <div class="generalcase">COVID-19 Gender % Wise Data</div>
-    <div id="GenderCase"></div>    
-</div>
-
-<div class="warper">
-<div class="generalcase">COVID-19 Bangladesh District Wise Data</div>
-<div class="generalcase_inner">
-<table id="DistrictswiseTable">
-  <thead>
-    <tr>
-      <th>S#</th>
-      <th>District</th>
-      <th>Total Infected</th>
-    </tr>
-  </thead>
-  <tbody class="DistrictswiseTable">  
-  </tbody>
-</table> 
-</div>     
-</div>
-
-<div class="warper">
-<div class="generalcase">COVID-19 by Country and Territory</div>
-<div class="generalcase_inner">
-    <table id="datatable" class="table table-striped table-bordered w-100"></table>
-</div>
-</div>
-
-
-<script>
-    axios.get('https://api.thevirustracker.com/free-api?countryTotals=ALL').then(function (response) {
-        var rawData = arrData(response.data.countryitems[0]);
-        myTable(rawData);
-    }).catch(function (error) {
-        console.log(error);
-    })
-    
-    function arrData(objData) {
-        var arrayData = Object.keys(objData).map(function(key) {
-            return objData[key]
-        });
-        return myData(arrayData);
-    }
-    
-    function myData(data) {
-        var list = [];
-        data.forEach(function(item) {
-            list.push([
-                item.title,
-                item.total_cases,
-                item.total_deaths,
-                item.total_recovered,
-                item.total_active_cases
-            ]);
-        });
-        console.log(list.slice(0, 182));
-        return list.slice(0, 182);
-    }
-  
-    function myTable(dataSet) {
-        var myDataTable = $('#datatable').DataTable({
-            data: dataSet,
-            columns: [
-                { title: "Countries and territories" },
-                { title: "Cases" },
-                { title: "Deaths" },
-                { title: "Recoveries" },
-                { title: "Active" }
-            ],
-            order: [[ 1, "desc" ]]
-        });
-        return myDataTable;
-    }
+<!-- SlickNav Start -->
+<script src="js/jquery.slicknav.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	jQuery('#menu').slicknav();
+});
 </script>
-
-
-
-
-<div class="warper">
-    <div class="footer">
-    <div class="update">Last Update : <span class="lastUpdate"></span></div>
-    <div class="copyright"><a href="http://www.royaltechbd.com" target="_blank">Royal Technologies</a></div>
-  </div>
-</div>
+<!-- SlickNav End -->
 </body>
 </html>
