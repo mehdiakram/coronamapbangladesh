@@ -1,0 +1,175 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Covid-19 Status Bangladesh</title>
+<link rel="icon" href="corona.svg" type="image/png">
+<meta name="description" content="" />
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel='stylesheet' type='text/css'>
+<link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css?ver=5.4" type='text/css' media='all' />
+<script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="js/jquery.number.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" media="all" href="style.css" />
+</head>
+<body>
+<div class="wrap"> <!-- Warp Start -->
+	<div class="header">
+			<div class="header_top">
+					<img src="images/top_banner.jpg" alt="" />
+				<div class="right_box">
+					<div class="social">
+						<ul>
+														
+						</ul>
+					</div>			
+				</div>
+			</div>			
+    <div class="rt-mainnav">
+        <ul id="menu" class="royalnav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="analytics.html">Analytics</a></li>
+        <li><a href="district.html">District</a></li>
+        <li><a href="world.html">World Data</a></li>
+        </ul>
+    </div>
+	</div>
+	
+	
+<div class="main_cont"> <!-- Main Container Start -->
+	<div class="main_area"> <!-- Main Area Start -->   
+        <div class="right_cont">
+            <div class="generalcase">COVID-19 Gender % Wise Data</div>
+            <div class="generalcase_inner" id="GenderCase"></div> 
+        
+
+        <script type="text/javascript">
+        jQuery.get('https://fastaar.com/api', function(res){
+            // Gender Case %
+            var genderfemale = parseInt(res.genders.female.confirmed)
+            var gendermale = parseInt(res.genders.male.confirmed)
+           
+            // Gender Case %
+            // var ageonetoten = parseInt(res.ages.onetoten.confirmed)
+            // var agetentotwenty = parseInt(res.ages.tentotwenty.confirmed)
+            // var agetwentytothirty = parseInt(res.ages.twentytothirty.confirmed)
+            // var agethirtytoforty = parseInt(res.ages.thirtytoforty.confirmed)
+            // var agefortytofifty = parseInt(res.ages.fortytofifty.confirmed)
+            // var agefiftytosixty = parseInt(res.ages.fiftytosixty.confirmed)
+            // var agesixtyplus = parseInt(res.ages.sixtyplus.confirmed)
+        
+
+          google.charts.load('current', {'packages':['corechart']});
+          google.charts.setOnLoadCallback(GenderCase);
+          function GenderCase() {
+            var data = google.visualization.arrayToDataTable([
+              ['Task', '%'],
+              ['Female', genderfemale],
+              ['Male', gendermale],                    
+            ]);
+
+            var options = {
+              title: 'Total COVID-19 % Bangladesh Genderwise',
+              is3D: true, // true or false
+              pieSliceText: 'label',
+              pieSliceTextStyle: {color: '#fff',}, 
+              colors: ['#0dcc2d','#da0707',],         
+              //pieHole: 0.4,
+              legend:'right', // none, left, right
+              //pieStartAngle: 40,
+    /*          slices: {
+                0: {offset: 0.2},
+                1: { color: '#ddd' } // color: '#ddd' or offset: 0.2
+              },*/
+              width:"100%",
+              height:500,        
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('GenderCase'));
+          chart.draw(data, options);     
+          }
+
+
+
+     
+    //
+        google.charts.load("current", {packages:['corechart']});
+        google.charts.setOnLoadCallback(AgeCase);
+        function AgeCase() {
+          var data = google.visualization.arrayToDataTable([
+            ["Age", "COVID-19 Infected %", { role: "style" } ],
+            ['Age: 1-10', ageonetoten, "#007bff"],
+            ['Age: 10-20', agetentotwenty, "#e83e8c"],
+            ['Age: 20-30', agetwentytothirty, "#6f42c1"],
+            ['Age: 30-40', agethirtytoforty, "#fd7e14"],
+            ['Age: 40-50', agefortytofifty, "#dc3545"],
+            ['Age: 50-60', agefiftytosixty, "#17a2b8"],
+            ['Age: 60+', agesixtyplus, "#28a745"],
+          ]);
+
+          var view = new google.visualization.DataView(data);
+          view.setColumns([0, 1,
+                           { calc: "stringify",
+                             sourceColumn: 1,
+                             type: "string",
+                             role: "annotation" },
+                           2]);
+
+          var options = {
+            title: "Total COVID-19 % Bangladesh Agewise",
+            height: 500,
+            width:"100%",
+            legend: { position: 'none' },
+            bar: { groupWidth: '75%'},
+            legend: { position: "none" },
+          };
+          var chart = new google.visualization.ColumnChart(document.getElementById("AgeCase"));
+          chart.draw(view, options);
+         }
+
+
+
+        }); 
+        </script>                     
+        </div>
+    	<div class="left_cont">
+    		
+    		<div class="widget_text widget-box">
+    			<h3 class="widget-title">Advertisement</h3>
+    			<div class="textwidget custom-html-widget">
+    			
+
+    			</div>
+    		</div>
+
+    	</div><!-- End of left_cont -->  
+	</div> <!-- Main Area Start -->
+</div> <!-- Main Container End -->	
+
+	
+	
+
+		<div class="footer_wrap">
+			<div class="copyright">
+						&copy; 2020 Covid-19 Status Bangladesh, All Rights Reserved.
+						</div>
+			<div class="designed">
+			Designed &amp; Developed by <a href="https://www.royaltechbd.com/" target="_blank">Royal Technologies</a>
+			</div>
+		</div>	
+</div>	<!-- Warp End -->
+
+<!-- SlickNav Start -->
+<script src="js/jquery.slicknav.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	jQuery('#menu').slicknav();
+});
+</script>
+<!-- SlickNav End -->
+</body>
+</html>

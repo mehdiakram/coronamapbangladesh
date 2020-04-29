@@ -1014,6 +1014,47 @@ span.deathscount{
 
 
 
+table#DistrictswiseTable {
+  width:100%;
+}
+table#DistrictswiseTable, 
+table#DistrictswiseTable th, 
+table#DistrictswiseTable td {
+  border: 1px solid #7f5fce;
+  border-collapse: collapse;
+}
+
+table#DistrictswiseTable th, 
+table#DistrictswiseTable td {
+  padding: 15px;
+  text-align: center;
+}
+
+table#DistrictswiseTable th:nth-child(2), 
+table#DistrictswiseTable td:nth-child(2) {
+  padding: 15px;
+  text-align: left;
+}
+
+table#DistrictswiseTable tr:nth-child(even) {
+  background: #eee;
+}
+table#DistrictswiseTable tr:nth-child(odd) {
+ background-color: #fff;
+}
+table#DistrictswiseTable th {
+    background: #7f5fce;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;  
+}
+
+table#DistrictswiseTable tr td:first-child:before
+{
+  counter-increment: Serial;      /* Increment the Serial counter */
+  content: counter(Serial); /* Display the counter */
+}
+
 
 .textalignright{
   text-align: right;

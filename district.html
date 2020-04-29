@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Covid-19 Status Bangladesh</title>
+<link rel="icon" href="corona.svg" type="image/png">
+<meta name="description" content="" />
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel='stylesheet' type='text/css'>
+<link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css?ver=5.4" type='text/css' media='all' />
+<script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="js/jquery.number.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" media="all" href="style.css" />
+</head>
+<body>
+<div class="wrap"> <!-- Warp Start -->
+	<div class="header">
+			<div class="header_top">
+					<img src="images/top_banner.jpg" alt="" />
+				<div class="right_box">
+					<div class="social">
+						<ul>
+														
+						</ul>
+					</div>			
+				</div>
+			</div>			
+    <div class="rt-mainnav">
+        <ul id="menu" class="royalnav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="analytics.html">Analytics</a></li>
+        <li><a href="district.html">District</a></li>
+        <li><a href="world.html">World Data</a></li>
+        </ul>
+    </div>
+	</div>
+	
+	
+<div class="main_cont"> <!-- Main Container Start -->
+	<div class="main_area"> <!-- Main Area Start -->   
+        <div class="right_cont">
+        <div class="generalcase">COVID-19 Bangladesh District Wise Data</div>
+        <div class="generalcase_inner">
+        <table id="DistrictswiseTable">
+          <thead>
+            <tr>
+              <th>S#</th>
+              <th>District</th>
+              <th>Total Infected</th>
+            </tr>
+          </thead>
+          <tbody class="DistrictswiseTable">  
+          </tbody>
+        </table>
+        <div class="update">Last Update : <span class="lastUpdate"></span></div>  
+        </div> 
+
+        <script>
+            jQuery(function(){
+                jQuery.get('https://fastaar.com/api', function(res){
+                    console.log(res);
+                    jQuery('.lastUpdate').html(res.lastUpdate)
+                    
+                    res.districts.forEach(function(district){
+                        $("#DistrictswiseTable").append(`<tr><td></td><td>${district.name}</td><td>${district.confirmed}</td></tr>`);
+                    });
+
+                  
+                });
+            });
+        </script>
+        </div>
+    	<div class="left_cont">
+    		
+    		<div class="widget_text widget-box">
+    			<h3 class="widget-title">Advertisement</h3>
+    			<div class="textwidget custom-html-widget">
+    			
+
+    			</div>
+    		</div>
+
+    	</div><!-- End of left_cont -->  
+	</div> <!-- Main Area Start -->
+</div> <!-- Main Container End -->	
+
+	
+	
+
+		<div class="footer_wrap">
+			<div class="copyright">
+						&copy; 2020 Covid-19 Status Bangladesh, All Rights Reserved.
+						</div>
+			<div class="designed">
+			Designed &amp; Developed by <a href="https://www.royaltechbd.com/" target="_blank">Royal Technologies</a>
+			</div>
+		</div>	
+</div>	<!-- Warp End -->
+
+<!-- SlickNav Start -->
+<script src="js/jquery.slicknav.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	jQuery('#menu').slicknav();
+});
+</script>
+<!-- SlickNav End -->
+</body>
+</html>
