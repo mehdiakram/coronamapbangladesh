@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Covid-19 Status Bangladesh</title>
+<title>World Corona Map</title>
 <link rel="icon" href="corona.svg" type="image/png">
 <meta name="description" content="" />
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel='stylesheet' type='text/css'>
@@ -33,7 +33,7 @@
         <ul id="menu" class="royalnav">
         <li><a href="index.html">Home</a></li>
         <li><a href="analytics.html">Analytics</a></li>
-        <li><a href="district.html">District</a></li>
+        <li><a href="district.html">District</a></li>        
         <li><a href="worldtable.html">World Table</a></li>
         <li><a href="worldmap.html">World Map</a></li>
         </ul>
@@ -44,48 +44,55 @@
 <div class="main_cont"> <!-- Main Container Start -->
 	<div class="main_area"> <!-- Main Area Start -->   
         <div class="right_cont">
-        <div class="generalcase">COVID-19 Bangladesh District Wise Data</div>
-        <div class="generalcase_inner">
-        <table id="DistrictswiseTable">
-          <thead>
-            <tr>
-              <th>S#</th>
-              <th>District</th>
-              <th>Total Infected</th>
-            </tr>
-          </thead>
-          <tbody class="DistrictswiseTable">  
-          </tbody>
-        </table>
-        <div class="update">Last Update : <span class="lastUpdate"></span></div>  
-        </div> 
-
-        <script>
-            jQuery(function(){
-                jQuery.get('https://fastaar.com/api', function(res){
-                    console.log(res);
-                    jQuery('.lastUpdate').html(res.lastUpdate)
-                    
-                    res.districts.forEach(function(district){
-                        $("#DistrictswiseTable").append(`<tr><td></td><td>${district.name}</td><td>${district.confirmed}</td></tr>`);
-                    });
-
-                  
-                });
-            });
-        </script>
+        <div class="generalcase">World Corona Map</div>
+        <div class="generalcase_inner">    
+		<div id="worldmap"></div>
         </div>
-    	<div class="left_cont">
-    		
-    		<div class="widget_text widget-box">
-    			<h3 class="widget-title">Advertisement</h3>
-    			<div class="textwidget custom-html-widget">
-    			
+<script>
+// World Map
+google.charts.load("current", {packages: ["geochart"]});
+google.charts.setOnLoadCallback(drawRegionsMap);
 
-    			</div>
-    		</div>
+function drawRegionsMap() {
+  fetch("https://api.covid19api.com/summary")
+    .then((res) => res.json())
+    .then((res) => {
 
-    	</div><!-- End of left_cont -->  
+      let cases = [];
+
+      res.Countries.forEach((country) => {
+        cases.push([country.CountryCode, country.TotalConfirmed]);
+      });
+
+      var data = google.visualization.arrayToDataTable([
+        ["Country", "Number of cases"],
+        ...cases
+      ]);
+
+      var options = {
+        colorAxis: { colors: ["#3498db", "#c0392b"] },
+        
+      };
+
+      var chart = new google.visualization.GeoChart(document.getElementById("worldmap"));
+      chart.draw(data, options);
+    });
+}
+</script>
+
+	
+</div>
+	<div class="left_cont">
+		
+		<div class="widget_text widget-box">
+			<h3 class="widget-title">Advertisement</h3>
+			<div class="textwidget custom-html-widget">
+			
+
+			</div>
+		</div>
+
+	</div><!-- End of left_cont -->  
 	</div> <!-- Main Area Start -->
 </div> <!-- Main Container End -->	
 

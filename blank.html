@@ -33,9 +33,8 @@
         <ul id="menu" class="royalnav">
         <li><a href="index.html">Home</a></li>
         <li><a href="analytics.html">Analytics</a></li>
-        <li><a href="district.html">District</a></li>
-        <li><a href="worldtable.html">World Table</a></li>
-        <li><a href="worldmap.html">World Map</a></li>
+        <li><a href="district.html">District</a></li>        
+        <li><a href="world.html">World Data</a></li>
         </ul>
     </div>
 	</div>
@@ -44,48 +43,30 @@
 <div class="main_cont"> <!-- Main Container Start -->
 	<div class="main_area"> <!-- Main Area Start -->   
         <div class="right_cont">
-        <div class="generalcase">COVID-19 Bangladesh District Wise Data</div>
-        <div class="generalcase_inner">
-        <table id="DistrictswiseTable">
-          <thead>
-            <tr>
-              <th>S#</th>
-              <th>District</th>
-              <th>Total Infected</th>
-            </tr>
-          </thead>
-          <tbody class="DistrictswiseTable">  
-          </tbody>
-        </table>
-        <div class="update">Last Update : <span class="lastUpdate"></span></div>  
-        </div> 
+        <div class="generalcase">COVID-19 Bangladesh Summary</div>
+        <div class="generalcase_inner">    
 
-        <script>
-            jQuery(function(){
-                jQuery.get('https://fastaar.com/api', function(res){
-                    console.log(res);
-                    jQuery('.lastUpdate').html(res.lastUpdate)
-                    
-                    res.districts.forEach(function(district){
-                        $("#DistrictswiseTable").append(`<tr><td></td><td>${district.name}</td><td>${district.confirmed}</td></tr>`);
-                    });
 
-                  
-                });
-            });
-        </script>
-        </div>
-    	<div class="left_cont">
-    		
-    		<div class="widget_text widget-box">
-    			<h3 class="widget-title">Advertisement</h3>
-    			<div class="textwidget custom-html-widget">
-    			
+        <div class="update">Last Update : <span class="lastUpdate"></span></div>
+        </div>  
+        <div class="marquee"><marquee behavior="" direction=""><ul id="districts"></ul></marquee></div>
+<script>
+  
+</script>
 
-    			</div>
-    		</div>
+	
+</div>
+	<div class="left_cont">
+		
+		<div class="widget_text widget-box">
+			<h3 class="widget-title">Advertisement</h3>
+			<div class="textwidget custom-html-widget">
+			
 
-    	</div><!-- End of left_cont -->  
+			</div>
+		</div>
+
+	</div><!-- End of left_cont -->  
 	</div> <!-- Main Area Start -->
 </div> <!-- Main Container End -->	
 

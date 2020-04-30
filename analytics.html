@@ -34,7 +34,8 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="analytics.html">Analytics</a></li>
         <li><a href="district.html">District</a></li>
-        <li><a href="world.html">World Data</a></li>
+        <li><a href="worldtable.html">World Table</a></li>
+        <li><a href="worldmap.html">World Map</a></li>
         </ul>
     </div>
 	</div>
@@ -56,106 +57,150 @@
             	<div class="update">Last Update : <span class="agesUpdate"></span></div>         	
             </div> 
         
+            <div class="generalcase">COVID-19 Datewise Total</div>
+            <div class="generalcase_inner">
+              <div id="bangladeshchart"></div>       
+            </div> 
 
-        <script type="text/javascript">
-        jQuery.get('https://fastaar.com/api', function(res){
-        	console.log(res);
-            // Gender Case %
-            var genderfemale = parseInt(res.genders.female.confirmed)
-            var gendermale = parseInt(res.genders.male.confirmed)
-           	jQuery('.gendersUpdate').html(res.gendersUpdate)
-
-
-            // Gender Case %
-            var onetoten = parseInt(res.ages.onetoten.confirmed)
-            var eleventotwenty = parseInt(res.ages.eleventotwenty.confirmed)
-            var twentyonetothirty = parseInt(res.ages.twentyonetothirty.confirmed)
-            var thirtyonetofourty = parseInt(res.ages.thirtyonetofourty.confirmed)
-            var fourtyonetofifty = parseInt(res.ages.fourtyonetofifty.confirmed)
-            var fiftyonetosixty = parseInt(res.ages.fiftyonetosixty.confirmed)
-            var sixtyplus = parseInt(res.ages.sixtyplus.confirmed)
-        	jQuery('.agesUpdate').html(res.agesUpdate)
-
-          google.charts.load('current', {'packages':['corechart']});
-          google.charts.setOnLoadCallback(GenderCase);
-          function GenderCase() {
-            var data = google.visualization.arrayToDataTable([
-              ['Task', '%'],
-              ['Female', genderfemale],
-              ['Male', gendermale],                    
-            ]);
-
-            var options = {
-              title: 'Total COVID-19 % Bangladesh Genderwise',
-              is3D: true, // true or false
-              pieSliceText: 'label',
-              pieSliceTextStyle: {color: '#fff',}, 
-              colors: ['#0dcc2d','#ef3e3e',],         
-              //pieHole: 0.4,
-              legend:'right', // none, left, right
-              //pieStartAngle: 40,
-    /*          slices: {
-                0: {offset: 0.2},
-                1: { color: '#ddd' } // color: '#ddd' or offset: 0.2
-              },*/
-              width:"100%",
-              height:500,        
-            };
-
-            var chart = new google.visualization.PieChart(document.getElementById('GenderCase'));
-          chart.draw(data, options);     
-          }
+<script type="text/javascript">
+jQuery.get('https://fastaar.com/api', function(res){
+	console.log(res);
+    // Gender Case %
+    var genderfemale = parseInt(res.genders.female.confirmed)
+    var gendermale = parseInt(res.genders.male.confirmed)
+   	jQuery('.gendersUpdate').html(res.gendersUpdate)
 
 
+    // Gender Case %
+    var onetoten = parseInt(res.ages.onetoten.confirmed)
+    var eleventotwenty = parseInt(res.ages.eleventotwenty.confirmed)
+    var twentyonetothirty = parseInt(res.ages.twentyonetothirty.confirmed)
+    var thirtyonetofourty = parseInt(res.ages.thirtyonetofourty.confirmed)
+    var fourtyonetofifty = parseInt(res.ages.fourtyonetofifty.confirmed)
+    var fiftyonetosixty = parseInt(res.ages.fiftyonetosixty.confirmed)
+    var sixtyplus = parseInt(res.ages.sixtyplus.confirmed)
+	jQuery('.agesUpdate').html(res.agesUpdate)
 
-     
-    //
-        google.charts.load("current", {packages:['corechart']});
-        google.charts.setOnLoadCallback(AgeCase);
-        function AgeCase() {
-          var data = google.visualization.arrayToDataTable([
-            ["Age", "COVID-19 Infected %", { role: "style" } ],
-            ['Age: 1-10', onetoten, "#007bff"],
-            ['Age: 11-20', eleventotwenty, "#e83e8c"],
-            ['Age: 21-30', twentyonetothirty, "#6f42c1"],
-            ['Age: 31-40', thirtyonetofourty, "#fd7e14"],
-            ['Age: 41-50', fourtyonetofifty, "#dc3545"],
-            ['Age: 51-60', fiftyonetosixty, "#17a2b8"],
-            ['Age: 60+', sixtyplus, "#28a745"],
-          ]);
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(GenderCase);
+  function GenderCase() {
+    var data = google.visualization.arrayToDataTable([
+      ['Task', '%'],
+      ['Female', genderfemale],
+      ['Male', gendermale],                    
+    ]);
 
-          var view = new google.visualization.DataView(data);
-          view.setColumns([0, 1,
-                           { calc: "stringify",
-                             sourceColumn: 1,
-                             type: "string",
-                             role: "annotation" },
-                           2]);
+    var options = {
+      title: 'Total COVID-19 % Bangladesh Genderwise',
+      is3D: true, // true or false
+      pieSliceText: 'label',
+      pieSliceTextStyle: {color: '#fff',}, 
+      colors: ['#0dcc2d','#ef3e3e',],         
+      //pieHole: 0.4,
+      legend:'right', // none, left, right
+      //pieStartAngle: 40,
+/*          slices: {
+        0: {offset: 0.2},
+        1: { color: '#ddd' } // color: '#ddd' or offset: 0.2
+      },*/
+      width:"100%",
+      height:500,        
+    };
 
-          var options = {
-            title: "Total COVID-19 % Bangladesh Agewise",
-              //is3D: true, // true or false
-              pieSliceText: 'label',
-              pieSliceTextStyle: {color: '#fff',},         
-              pieHole: 0.4,
-              legend:'right', // none, left, right
-              //pieStartAngle: 40,
-    /*          slices: {
-                0: {offset: 0.2},
-                1: { color: '#ddd' } // color: '#ddd' or offset: 0.2
-              },*/
-              width:"100%",
-              height:500,   
-          };
-
-          var chart = new google.visualization.PieChart(document.getElementById("AgeCase"));
-          chart.draw(view, options);
-         }
+    var chart = new google.visualization.PieChart(document.getElementById('GenderCase'));
+  chart.draw(data, options);     
+  }
 
 
 
-        }); 
-        </script>                     
+
+//
+google.charts.load("current", {packages:['corechart']});
+google.charts.setOnLoadCallback(AgeCase);
+function AgeCase() {
+  var data = google.visualization.arrayToDataTable([
+    ["Age", "COVID-19 Infected %", { role: "style" } ],
+    ['Age: 1-10', onetoten, "#007bff"],
+    ['Age: 11-20', eleventotwenty, "#e83e8c"],
+    ['Age: 21-30', twentyonetothirty, "#6f42c1"],
+    ['Age: 31-40', thirtyonetofourty, "#fd7e14"],
+    ['Age: 41-50', fourtyonetofifty, "#dc3545"],
+    ['Age: 51-60', fiftyonetosixty, "#17a2b8"],
+    ['Age: 60+', sixtyplus, "#28a745"],
+  ]);
+
+  var view = new google.visualization.DataView(data);
+  view.setColumns([0, 1,
+                   { calc: "stringify",
+                     sourceColumn: 1,
+                     type: "string",
+                     role: "annotation" },
+                   2]);
+
+  var options = {
+    title: "Total COVID-19 % Bangladesh Agewise",
+      //is3D: true, // true or false
+      pieSliceText: 'label',
+      pieSliceTextStyle: {color: '#fff',},         
+      pieHole: 0.4,
+      legend:'right', // none, left, right
+      //pieStartAngle: 40,
+/*          slices: {
+        0: {offset: 0.2},
+        1: { color: '#ddd' } // color: '#ddd' or offset: 0.2
+      },*/
+      width:"100%",
+      height:500,   
+  };
+
+  var chart = new google.visualization.PieChart(document.getElementById("AgeCase"));
+  chart.draw(view, options);
+ }
+
+}); 
+
+
+
+
+
+
+
+// bangladesh Line charts
+google.charts.load("current", { packages: ["corechart"] });
+google.charts.setOnLoadCallback(drawChart);
+function drawChart() {
+  fetch("https://api.covid19api.com/total/country/bangladesh/status/confirmed")
+    .then((res) => res.json())
+    .then((res) => {
+      let cases = [];
+      if (res.length !== 0) {
+        res.forEach((day) => {
+          cases.push([day.Date.slice(0, 10), day.Cases]);
+        });
+
+        var data = google.visualization.arrayToDataTable([
+          ["Date", "Cases"],
+          ...cases
+        ]);
+
+        var options = {
+          title: "Number of cases",
+          legend: { position: "bottom" },
+          width:"100%",
+          height:500,   
+        };
+
+        var chart = new google.visualization.LineChart(
+          document.querySelector("#bangladeshchart")
+        );
+
+        chart.draw(data, options);
+      } else {
+        document.querySelector("#bangladeshchart").innerHTML = "No data";
+      }
+    });
+} 
+</script>                     
         </div>
     	<div class="left_cont">
     		
