@@ -43,25 +43,38 @@
 <div class="main_cont"> <!-- Main Container Start -->
 	<div class="main_area"> <!-- Main Area Start -->   
         <div class="right_cont">
-            <div class="generalcase">COVID-19 Gender % Wise Data</div>
-            <div class="generalcase_inner" id="GenderCase"></div> 
+            <div class="generalcase">COVID-19 Gender Wise Data</div>
+            <div class="generalcase_inner">
+            	<div id="GenderCase"></div>
+            	<div class="update">Last Update : <span class="gendersUpdate"></span></div>
+        	</div>
+                       
+
+            <div class="generalcase">COVID-19 Age Group Wise Data</div>
+            <div class="generalcase_inner">
+            	<div id="AgeCase"></div>
+            	<div class="update">Last Update : <span class="agesUpdate"></span></div>         	
+            </div> 
         
 
         <script type="text/javascript">
         jQuery.get('https://fastaar.com/api', function(res){
+        	console.log(res);
             // Gender Case %
             var genderfemale = parseInt(res.genders.female.confirmed)
             var gendermale = parseInt(res.genders.male.confirmed)
-           
+           	jQuery('.gendersUpdate').html(res.gendersUpdate)
+
+
             // Gender Case %
-            // var ageonetoten = parseInt(res.ages.onetoten.confirmed)
-            // var agetentotwenty = parseInt(res.ages.tentotwenty.confirmed)
-            // var agetwentytothirty = parseInt(res.ages.twentytothirty.confirmed)
-            // var agethirtytoforty = parseInt(res.ages.thirtytoforty.confirmed)
-            // var agefortytofifty = parseInt(res.ages.fortytofifty.confirmed)
-            // var agefiftytosixty = parseInt(res.ages.fiftytosixty.confirmed)
-            // var agesixtyplus = parseInt(res.ages.sixtyplus.confirmed)
-        
+            var onetoten = parseInt(res.ages.onetoten.confirmed)
+            var eleventotwenty = parseInt(res.ages.eleventotwenty.confirmed)
+            var twentyonetothirty = parseInt(res.ages.twentyonetothirty.confirmed)
+            var thirtyonetofourty = parseInt(res.ages.thirtyonetofourty.confirmed)
+            var fourtyonetofifty = parseInt(res.ages.fourtyonetofifty.confirmed)
+            var fiftyonetosixty = parseInt(res.ages.fiftyonetosixty.confirmed)
+            var sixtyplus = parseInt(res.ages.sixtyplus.confirmed)
+        	jQuery('.agesUpdate').html(res.agesUpdate)
 
           google.charts.load('current', {'packages':['corechart']});
           google.charts.setOnLoadCallback(GenderCase);
@@ -77,7 +90,7 @@
               is3D: true, // true or false
               pieSliceText: 'label',
               pieSliceTextStyle: {color: '#fff',}, 
-              colors: ['#0dcc2d','#da0707',],         
+              colors: ['#0dcc2d','#ef3e3e',],         
               //pieHole: 0.4,
               legend:'right', // none, left, right
               //pieStartAngle: 40,
@@ -102,13 +115,13 @@
         function AgeCase() {
           var data = google.visualization.arrayToDataTable([
             ["Age", "COVID-19 Infected %", { role: "style" } ],
-            ['Age: 1-10', ageonetoten, "#007bff"],
-            ['Age: 10-20', agetentotwenty, "#e83e8c"],
-            ['Age: 20-30', agetwentytothirty, "#6f42c1"],
-            ['Age: 30-40', agethirtytoforty, "#fd7e14"],
-            ['Age: 40-50', agefortytofifty, "#dc3545"],
-            ['Age: 50-60', agefiftytosixty, "#17a2b8"],
-            ['Age: 60+', agesixtyplus, "#28a745"],
+            ['Age: 1-10', onetoten, "#007bff"],
+            ['Age: 11-20', eleventotwenty, "#e83e8c"],
+            ['Age: 21-30', twentyonetothirty, "#6f42c1"],
+            ['Age: 31-40', thirtyonetofourty, "#fd7e14"],
+            ['Age: 41-50', fourtyonetofifty, "#dc3545"],
+            ['Age: 51-60', fiftyonetosixty, "#17a2b8"],
+            ['Age: 60+', sixtyplus, "#28a745"],
           ]);
 
           var view = new google.visualization.DataView(data);
@@ -121,13 +134,21 @@
 
           var options = {
             title: "Total COVID-19 % Bangladesh Agewise",
-            height: 500,
-            width:"100%",
-            legend: { position: 'none' },
-            bar: { groupWidth: '75%'},
-            legend: { position: "none" },
+              //is3D: true, // true or false
+              pieSliceText: 'label',
+              pieSliceTextStyle: {color: '#fff',},         
+              pieHole: 0.4,
+              legend:'right', // none, left, right
+              //pieStartAngle: 40,
+    /*          slices: {
+                0: {offset: 0.2},
+                1: { color: '#ddd' } // color: '#ddd' or offset: 0.2
+              },*/
+              width:"100%",
+              height:500,   
           };
-          var chart = new google.visualization.ColumnChart(document.getElementById("AgeCase"));
+
+          var chart = new google.visualization.PieChart(document.getElementById("AgeCase"));
           chart.draw(view, options);
          }
 
