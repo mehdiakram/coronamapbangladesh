@@ -151,6 +151,7 @@ function AgeCase() {
       },*/
       width:"100%",
       height:500,   
+
   };
 
   var chart = new google.visualization.PieChart(document.getElementById("AgeCase"));
@@ -184,10 +185,50 @@ function drawChart() {
         ]);
 
         var options = {
-          title: "Number of cases",
+          title: "",
           legend: { position: "bottom" },
           width:"100%",
           height:500,   
+          pointsVisible: true,
+          //pointShape: 'square', //circle, triangle, square, diamond, star, polygon
+          //pointShape: { type: 'triangle', rotation: 180 },
+          //pointSize: 10,
+          //colors: ['#795548'],
+          //curveType: 'function',
+          hAxis: {
+            title: 'Date',
+            textStyle: {
+               color: '#01579b',
+               fontSize: 12,
+               fontName: 'Arial',
+               bold: true,
+               italic: false,
+            },
+            
+            titleTextStyle: {
+               color: '#01579b',
+               fontSize: 16,
+               fontName: 'Arial',
+               bold: false,
+               italic: false
+            }
+          },
+
+          vAxis: {
+            title: 'No of confirmed case',
+            textStyle: {
+               color: '#1a237e',
+               fontSize: 12,
+               bold: true,
+               italic: false,
+            },
+            titleTextStyle: {
+               color: '#01579b',
+               fontSize: 16,
+               bold: true,
+               italic: false
+            }
+          },           
         };
 
         var chart = new google.visualization.LineChart(
