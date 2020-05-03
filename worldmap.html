@@ -44,11 +44,42 @@
 <div class="main_cont"> <!-- Main Container Start -->
 	<div class="main_area"> <!-- Main Area Start -->   
         <div class="right_cont">
+
+        <div class="generalcase">COVID-19 World Summary</div>
+        <div class="generalcase_inner">    
+            <div class="coronasummery">
+                <div class="countCard confirmed"><span>Total Confirmed</span><span class="TotalConfirmed"></span></div>
+                <div class="countCard recovered"><span>Total Recovered</span><span class="TotalRecovered"></span></div>
+                <div class="countCard deaths"><span>Total Deaths</span><span class="TotalDeaths"></span></div>
+            </div>
+            <div class="coronasummery">
+                <div class="countCard confirmed"><span>Today Confirmed</span><span class="NewConfirmed"></span></div>
+                <div class="countCard recovered"><span>Today Recovered</span><span class="NewRecovered"></span></div>
+                <div class="countCard deaths"><span>Today Deaths</span><span class="NewDeaths"></span></div>
+            </div>
+        <div class="update">Last Update : <span class="summarylastupdate"></span></div>
+        </div> 
+
         <div class="generalcase">World Corona Map</div>
         <div class="generalcase_inner">    
 		<div id="worldmap"></div>
+
         </div>
 <script>
+    jQuery(function(){
+        jQuery.get('https://api.covid19api.com/summary', function(res){
+            console.log(res);
+            jQuery('.summarylastupdate').html(res.Date)
+            jQuery('.TotalConfirmed').html(res.Global.TotalConfirmed).number(true)
+            jQuery('.TotalDeaths').html(res.Global.TotalDeaths).number(true)
+            jQuery('.TotalRecovered').html(res.Global.TotalRecovered).number(true)           
+            jQuery('.NewConfirmed').html(res.Global.NewConfirmed).number(true)
+            jQuery('.NewDeaths').html(res.Global.NewDeaths).number(true)
+            jQuery('.NewRecovered').html(res.Global.NewRecovered).number(true)
+
+         });
+    });
+    	
 // World Map
 google.charts.load("current", {packages: ["geochart"]});
 google.charts.setOnLoadCallback(drawRegionsMap);
