@@ -44,22 +44,27 @@
 <div class="main_cont"> <!-- Main Container Start -->
 	<div class="main_area"> <!-- Main Area Start -->   
         <div class="right_cont">
-            <div class="generalcase">COVID-19 Gender Wise Data</div>
+            <div class="generalcase">COVID-19 Gender Wise Confirmed % </div>
             <div class="generalcase_inner">
             	<div id="GenderCase"></div>
             	<div class="update">Last Update : <span class="gendersUpdate"></span></div>
         	</div>
                        
 
-            <div class="generalcase">COVID-19 Age Group Wise Data</div>
+            <div class="generalcase">COVID-19 Age Group Wise Confirmed %</div>
             <div class="generalcase_inner">
             	<div id="AgeCase"></div>
             	<div class="update">Last Update : <span class="agesUpdate"></span></div>         	
             </div> 
         
-            <div class="generalcase">COVID-19 Datewise Total</div>
+            <div class="generalcase">COVID-19 Datewise Confirmed</div>
             <div class="generalcase_inner">
-              <div id="bangladeshchart"></div>       
+              <div id="bangladeshdailychart"></div> 
+            </div>         
+
+            <div class="generalcase">COVID-19 Confirmed Cumulative Total</div>
+            <div class="generalcase_inner">
+              <div id="cumulativetotal"></div> 
             </div> 
 
 <script type="text/javascript">
@@ -170,23 +175,22 @@ function AgeCase() {
 google.charts.load("current", { packages: ["corechart"] });
 google.charts.setOnLoadCallback(drawChart);
 function drawChart() {
-  fetch("https://api.covid19api.com/total/country/bangladesh/status/confirmed")
+  fetch("https://fastaar.com/api")
     .then((res) => res.json())
     .then((res) => {
       let cases = [];
-      if (res.length !== 0) {
-        res.forEach((day) => {
-          cases.push([day.Date.slice(0, 10), day.Cases]);
+        res.details.forEach((day) => {
+          cases.push([day.created_at.slice(0, 10), parseInt(day.confirmed)]);
         });
 
         var data = google.visualization.arrayToDataTable([
-          ["Date", "Cases"],
+          ["Date", "Confirmed"],
           ...cases
         ]);
 
         var options = {
           title: "",
-          legend: { position: "bottom" },
+          legend: { position: "none" },
           width:"100%",
           height:500,   
           pointsVisible: true,
@@ -215,7 +219,7 @@ function drawChart() {
           },
 
           vAxis: {
-            title: 'No of confirmed case',
+            title: 'No of confirmed case (Per day)',
             textStyle: {
                color: '#1a237e',
                fontSize: 12,
@@ -232,13 +236,86 @@ function drawChart() {
         };
 
         var chart = new google.visualization.LineChart(
-          document.querySelector("#bangladeshchart")
+          document.querySelector("#bangladeshdailychart")
         );
 
         chart.draw(data, options);
-      } else {
-        document.querySelector("#bangladeshchart").innerHTML = "No data";
-      }
+    });
+} 
+
+
+// bangladesh Line charts cumulative total
+google.charts.load("current", { packages: ["corechart"] });
+google.charts.setOnLoadCallback(cumulativetotaldrawChart);
+function cumulativetotaldrawChart() {
+  fetch("https://fastaar.com/api")
+    .then((res) => res.json())
+    .then((res) => {
+      let confirmed = [];
+      let confirmedcase = 0;
+        res.details.forEach((day) => {
+          date = day.created_at.slice(0, 10)
+          confirmedcase += parseInt(day.confirmed)
+          confirmed.push([date, confirmedcase]);
+        });
+
+        var data = google.visualization.arrayToDataTable([
+          ["Date", "Confirmed"],
+          ...confirmed
+        ]);
+
+        var options = {
+          title: "",
+          legend: { position: "none" },
+          width:"100%",
+          height:500,   
+          pointsVisible: true,
+          //pointShape: 'square', //circle, triangle, square, diamond, star, polygon
+          //pointShape: { type: 'triangle', rotation: 180 },
+          //pointSize: 10,
+          //colors: ['#795548'],
+          //curveType: 'function',
+          hAxis: {
+            title: 'Date',
+            textStyle: {
+               color: '#01579b',
+               fontSize: 12,
+               fontName: 'Arial',
+               bold: true,
+               italic: false,
+            },
+            
+            titleTextStyle: {
+               color: '#01579b',
+               fontSize: 16,
+               fontName: 'Arial',
+               bold: false,
+               italic: false
+            }
+          },
+
+          vAxis: {
+            title: 'No of confirmed case (Total)',
+            textStyle: {
+               color: '#1a237e',
+               fontSize: 12,
+               bold: true,
+               italic: false,
+            },
+            titleTextStyle: {
+               color: '#01579b',
+               fontSize: 16,
+               bold: true,
+               italic: false
+            }
+          },           
+        };
+
+        var chart = new google.visualization.LineChart(
+          document.querySelector("#cumulativetotal")
+        );
+
+        chart.draw(data, options);
     });
 } 
 </script>                     
